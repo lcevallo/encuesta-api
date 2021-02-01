@@ -1,10 +1,10 @@
-import pymysql
+import myconnutils
 from flask_restful import Resource, reqparse
 from flask import request
 from util import SplitNombres
 
 
-class Usuario(Resource):
+class UsuarioPostGrado(Resource):
     parser = reqparse.RequestParser()
 
     def get(self, token):
@@ -37,12 +37,7 @@ class Usuario(Resource):
 
     @classmethod
     def find_by_token(cls, token):
-        connection = pymysql.connect(
-            host="10.0.0.8", port=3306, user="lcevallosc",
-            charset='utf8mb4',
-            passwd="Ulaica2019-", db="db_lime_276",
-            cursorclass=pymysql.cursors.DictCursor
-        )
+        connection = myconnutils.getConnectionMysql()
         cursor = connection.cursor()
 
         query = "SELECT `tid`,`participant_id`,`firstname`,`lastname`,`email`,`token`,`usesleft` from `lime_tokens_782729` WHERE `token`= %s "
@@ -62,12 +57,7 @@ class Usuario(Resource):
 
     @classmethod
     def insert(cls, usuario):
-        connection = pymysql.connect(
-            host="10.0.0.8", port=3306, user="lcevallosc",
-            charset='utf8mb4',
-            passwd="Ulaica2019-", db="db_lime_276",
-            cursorclass=pymysql.cursors.DictCursor
-        )
+        connection = myconnutils.getConnectionMysql()
         cursor = connection.cursor()
 
         query = "INSERT INTO `lime_tokens_782729` (`firstname`, `lastname`, `email`, `emailstatus`, `token`, `language`, `sent`, `remindersent`, `remindercount`, `completed`, `usesleft`) VALUES (?, ?, ?, 'OK', ?, 'es-MX', 'N', 'N', 0, 'N', 10)"
