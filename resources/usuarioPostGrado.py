@@ -43,7 +43,6 @@ class UsuarioPostGrado(Resource):
         query = "SELECT `tid`,`participant_id`,`firstname`,`lastname`,`email`,`token`,`usesleft` from `lime_tokens_782729` WHERE `token`= %s "
         cursor.execute(query, (token,))
         row = cursor.fetchone()
-        print(row)
 
         connection.close()
 

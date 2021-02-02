@@ -1,2 +1,1 @@
-from Config import MySQL
 
