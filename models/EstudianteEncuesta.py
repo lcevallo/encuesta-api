@@ -1,6 +1,6 @@
 class EstudianteEncuesta:
 
-    def llenar_objeto(self, tid, participant_id, firstname, lastname, email,
+    def __init__(self, tid, participant_id, firstname, lastname, email,
                  emailstatus, token, language, blacklisted, sent,
                  remindersent, remindercount, completed, usesleft, validfrom,
                  validuntil, mpid, attribute1, attribute2, attribute3,
@@ -42,16 +42,52 @@ class EstudianteEncuesta:
         self.attribute15 = attribute15
         self.attribute16 = attribute16
 
-
+    @property
+    def data(self):
+        return {
+            'tid': self.tid,
+            'participant_id': self.participant_id,
+            'firstname': self.firstname,
+            'lastname': self.lastname,
+            'email': self.email,
+            'emailstatus': self.emailstatus,
+            'token': self.token,
+            'language': self.language,
+            'blacklisted': self.blacklisted,
+            'sent': self.sent,
+            'remindersent': self.remindersent,
+            'remindercount': self.remindercount,
+            'completed': self.completed,
+            'usesleft': self.usesleft,
+            'validfrom': self.validfrom,
+            'validuntil': self.validuntil,
+            'mpid': self.mpid,
+            'attribute1': self.attribute1,
+            'attribute2': self.attribute2,
+            'attribute3': self.attribute3,
+            'attribute4': self.attribute4,
+            'attribute5': self.attribute5,
+            'attribute6': self.attribute6,
+            'attribute7': self.attribute7,
+            'attribute8': self.attribute8,
+            'attribute9': self.attribute9,
+            'attribute10': self.attribute10,
+            'attribute11': self.attribute11,
+            'attribute12': self.attribute12,
+            'attribute13': self.attribute13,
+            'attribute14': self.attribute14,
+            'attribute15': self.attribute15,
+            'attribute16': self.attribute16
+        }
 
     @classmethod
     def obtener_json(cls, row):
 
         if row[14]:
-            row[14]=row[14].isoformat()
+            row[14] = row[14].isoformat()
 
         if row[15]:
-            row[15]=row[15].isoformat()
+            row[15] = row[15].isoformat()
 
         return {'estudiante': {
             'tid': row[0],
