@@ -1,0 +1,23 @@
+('ekudemic', 'public', 'estudiante_foto', 'id', 1, "nextval('estudiante_foto_id_seq'::regclass)", 'NO', 'integer', None, None, 32, 2, 0, None, None, None, None, None, None, None, None, None, None, None, None, 'ekudemic', 'pg_catalog', 'int4', None, None, None, None, '1', 'NO', 'NO', None, None, None, None, None, None, 'NEVER', None, 'YES')
+('ekudemic', 'public', 'estudiante_foto', 'estudianteid', 2, None, 'YES', 'integer', None, None, 32, 2, 0, None, None, None, None, None, None, None, None, None, None, None, None, 'ekudemic', 'pg_catalog', 'int4', None, None, None, None, '2', 'NO', 'NO', None, None, None, None, None, None, 'NEVER', None, 'YES')
+('ekudemic', 'public', 'estudiante_foto', 'cedula', 3, None, 'YES', 'character varying', 100, 400, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, 'ekudemic', 'pg_catalog', 'varchar', None, None, None, None, '3', 'NO', 'NO', None, None, None, None, None, None, 'NEVER', None, 'YES')
+('ekudemic', 'public', 'estudiante_foto', 'archivo', 4, None, 'YES', 'bytea', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, 'ekudemic', 'pg_catalog', 'bytea', None, None, None, None, '4', 'NO', 'NO', None, None, None, None, None, None, 'NEVER', None, 'YES')
+('ekudemic', 'public', 'estudiante_foto', 'filename', 5, None, 'YES', 'character varying', 200, 800, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, 'ekudemic', 'pg_catalog', 'varchar', None, None, None, None, '5', 'NO', 'NO', None, None, None, None, None, None, 'NEVER', None, 'YES')
+('ekudemic', 'public', 'estudiante_foto', 'filetype', 6, None, 'YES', 'character varying', 15, 60, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, 'ekudemic', 'pg_catalog', 'varchar', None, None, None, None, '6', 'NO', 'NO', None, None, None, None, None, None, 'NEVER', None, 'YES')
+('ekudemic', 'public', 'estudiante_foto', 'created_at', 7, None, 'YES', 'timestamp without time zone', None, None, None, None, None, 6, None, None, None, None, None, None, None, None, None, None, None, 'ekudemic', 'pg_catalog', 'timestamp', None, None, None, None, '7', 'NO', 'NO', None, None, None, None, None, None, 'NEVER', None, 'YES')
+('ekudemic', 'public', 'estudiante_foto', 'updated_at', 8, None, 'YES', 'timestamp without time zone', None, None, None, None, None, 6, None, None, None, None, None, None, None, None, None, None, None, 'ekudemic', 'pg_catalog', 'timestamp', None, None, None, None, '8', 'NO', 'NO', None, None, None, None, None, None, 'NEVER', None, 'YES')
+('ekudemic', 'public', 'estudiante_foto', 'created_by', 9, None, 'YES', 'character varying', 50, 200, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, 'ekudemic', 'pg_catalog', 'varchar', None, None, None, None, '9', 'NO', 'NO', None, None, None, None, None, None, 'NEVER', None, 'YES')
+('ekudemic', 'public', 'estudiante_foto', 'updated_by', 10, None, 'YES', 'character varying', 50, 200, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, 'ekudemic', 'pg_catalog', 'varchar', None, None, None, None, '10', 'NO', 'NO', None, None, None, None, None, None, 'NEVER', None, 'YES')
+['id', 'estudianteid', 'cedula', 'archivo', 'filename', 'filetype', 'created_at', 'updated_at', 'created_by', 'updated_by']
+['integer', 'integer', 'character varying', 'bytea', 'character varying', 'character varying', 'timestamp without time zone', 'timestamp without time zone', 'character varying', 'character varying']
+ id = vId,
+  estudianteid = vEstudianteid,
+  cedula = vCedula,
+  archivo = vArchivo,
+  filename = vFilename,
+  filetype = vFiletype,
+  created_at = vCreated_at,
+  updated_at = vUpdated_at,
+  created_by = vCreated_by,
+  updated_by = vUpdated_by,
+
