@@ -3,7 +3,7 @@ import psycopg2
 
 
 # Function return a connection.
-def getConnectionMysql():
+def getConnectionMysqlActual():
     # You can change the connection arguments.
     connectionMysqlEncuestas = pymysql.connect(
         host="10.0.0.8", port=3306, user="lcevallosc",
@@ -13,6 +13,15 @@ def getConnectionMysql():
     )
     return connectionMysqlEncuestas
 
+def getConnectionMysql():
+    # You can change the connection arguments.
+    connectionMysqlEncuestas = pymysql.connect(
+        host="10.0.0.9", port=3306, user="desarrollo",
+        charset='utf8mb4',
+        passwd="Ulaica2021+", db="db_lime32516",
+        cursorclass=pymysql.cursors.DictCursor
+    )
+    return connectionMysqlEncuestas
 
 def getConnectionEkudemic():
     connectionPostgresEkudemic = psycopg2.connect(
