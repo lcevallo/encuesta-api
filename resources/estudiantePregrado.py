@@ -52,9 +52,9 @@ class EstudiantePreGrado(Resource):
             if row is None:
                 return estudianteEkudemic
             else:
-                return None
+                return 'existe en base encuestas'
         else:
-            return None
+            return 'no ekudemic'
 
     @classmethod
     def obtener_x_cedula(cls, cedula):
@@ -186,6 +186,7 @@ class EstudiantesPreGradoResource(Resource):
         data = []
         cedula_list = []
         ya_existentes = []
+        no_ekudemic = []
         cedulas_buscar = []
         data_final = []
         for cedula in cedulas:
@@ -196,14 +197,16 @@ class EstudiantesPreGradoResource(Resource):
             cedulas_buscar.append(cedula_text)
 
             estudiante_encuesta = EstudiantePreGrado.find_by_cedula_ekudemic(cedula_text)
-            if estudiante_encuesta:
+            if estudiante_encuesta =='existe en base encuestas':
+                no_ekudemic.append({"mensaje": "{} ya esta en la base de encuestas ".format(cedula_text)})
+
+            elif estudiante_encuesta =='no ekudemic':
+                no_ekudemic.append({"mensaje": "{} no esta en ekudemic ".format(cedula_text)})
+            else:
                 data.append(estudiante_encuesta)
                 cedula_list.append(cedula_text)
-            else:
-                ya_existentes.append({"mensaje": "{} ya esta en la base de datos de encuesta".format(cedula_text)})
 
         if data:
-
             connectionMysql = myconnutils.getConnectionMysql()
             cursor = connectionMysql.cursor()
 
@@ -289,9 +292,11 @@ class EstudiantesPreGradoResource(Resource):
                     )
                     data_final.append(estudianteEnc.data)
 
-            connectionMysql.close()
+                connectionMysql.close()
+
         return {'estudiantes_new': data_final,
-                'ya_existentes': ya_existentes
+                'ya_existentes': ya_existentes,
+                'no-ekudemic:': no_ekudemic
                 }
 
     @classmethod
