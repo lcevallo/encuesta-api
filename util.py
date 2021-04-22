@@ -38,39 +38,45 @@ def SplitNombres(nombre):
             prev = ""
 
     num_nombres = len(names)
-    print(f"este el total de nombres ingresados: {num_nombres}")
-    nombres, apellido1, apellido2 = "", "", ""
+    # print(f"este el total de nombres ingresados: {num_nombres}")
+    apellido1, apellido2, nombre1, nombre2 = "", "", "", ""
 
     # Cuando no existe nombre.
     if num_nombres == 0:
-        nombres = ""
+        nombre1 = ""
 
     # Cuando el nombre consta de un solo elemento.
     elif num_nombres == 1:
-        nombres = names[0]
+        nombre1 = names[0]
+        nombre2 = ''
+        apellido1 = ''
+        apellido2 = ''
 
     # Cuando el nombre consta de dos elementos.
     elif num_nombres == 2:
-        nombres = names[0]
-        apellido1 = names[1]
+        nombre1 = names[1]
+        nombre2 = ''
+        apellido1 = names[0]
+        apellido2 = ''
 
     # Cuando el nombre consta de tres elementos.
     elif num_nombres == 3:
-        nombres = names[0]
-        apellido1 = names[1]
-        apellido2 = names[2]
+        nombre1 = names[2]
+        nombre2 = ''
+        apellido1 = names[0]
+        apellido2 = names[1]
 
     # Cuando el nombre consta de más de tres elementos.
     else:
-        print(nombres)
-        nombres = nombres.title()
-        apellido1 = apellido1.title()
-        apellido2 = apellido2.title()
-
+        nombre1 = names[2]
+        nombre2 = names[3]
+        apellido1 = names[0]
+        apellido2 = names[1]
 
     # Establecemos las cadenas con el primer caracter en mayúscula.
-    nombres = nombres.title()
+    nombre1 = nombre1.title()
+    nombre2 = nombre2.title()
     apellido1 = apellido1.title()
     apellido2 = apellido2.title()
 
-    return (nombres, apellido1, apellido2)
+    return (nombre1, nombre2, apellido1, apellido2)

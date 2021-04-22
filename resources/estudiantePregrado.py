@@ -7,6 +7,7 @@ from flask import request
 
 from models.EstudianteEncuesta import EstudianteEncuesta
 from resources.estudiantesEkudemic import Estudiante
+from util import SplitNombres
 
 
 class EstudiantePreGrado(Resource):
@@ -167,6 +168,80 @@ class EstudiantePreGrado(Resource):
         connectionMysql.close()
 
 
+class MaestrantesEncuestasResources(Resource):
+    def post(self):
+        data = request.get_json()
+        tupla_participantes = self.crear_participantes(data)
+
+        return {'ids_nuevos': tupla_participantes[0],
+                'cedulas_existentes': tupla_participantes[1]}
+
+
+    @classmethod
+    def crear_participantes(cls, json_value):
+
+        sql_insert_maestrante = """
+            INSERT INTO lime_tokens_782729 ( firstname, lastname, email, emailstatus, token, language, sent, remindersent, remindercount, completed, usesleft)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        """
+
+        connectionMysql = myconnutils.getConnectionMysql()
+        cursor = connectionMysql.cursor()
+        insert_ids_nuevos = []
+        insert_cedulas_existentes = []
+
+        for maestrante in json_value['Maestrantes']:
+            cedula_text = str(maestrante['cedula'])
+            if len(cedula_text) < 10:
+                cedula_text = "0" + str(cedula_text)
+
+            nombre_tupla = SplitNombres(maestrante['Maestrante'])
+
+            if not cls.isInTable(cedula_text):
+                cursor.execute(sql_insert_maestrante,
+                               (
+                                   nombre_tupla[0] + ' ' + nombre_tupla[1],
+                                   nombre_tupla[2] + ' ' + nombre_tupla[3],
+                                   maestrante['correo'],
+                                   'OK',
+                                   cedula_text,
+                                   'es-MX',
+                                   'N',
+                                   'N',
+                                   0,
+                                   'N',
+                                   10
+                               )
+                               )
+                connectionMysql.commit()
+                id_participante = cursor.lastrowid
+                insert_ids_nuevos.append(id_participante)
+            else:
+                insert_cedulas_existentes.append(cedula_text)
+
+        return (insert_ids_nuevos, insert_cedulas_existentes)
+
+
+    @classmethod
+    def isInTable(cls, cedula):
+        sql_select = """
+            SELECT IF((
+                 SELECT count(*) FROM lime_tokens_782729 
+                 WHERE lime_tokens_782729.token =  %s)
+            ,1,0) as respuesta
+        """
+        connectionMysql = myconnutils.getConnectionMysql()
+        cursor = connectionMysql.cursor()
+
+        cursor.execute(sql_select, (cedula,))
+        row = cursor.fetchone()
+
+        if row['respuesta'] == 1:
+            return True
+        else:
+            return False
+
+
 class EstudiantesPreGradoResource(Resource):
     def get(self):
         estudiantes_pregrado_list = self.obtener_estudiantes_encuestas()
@@ -197,10 +272,10 @@ class EstudiantesPreGradoResource(Resource):
             cedulas_buscar.append(cedula_text)
 
             estudiante_encuesta = EstudiantePreGrado.find_by_cedula_ekudemic(cedula_text)
-            if estudiante_encuesta =='existe en base encuestas':
+            if estudiante_encuesta == 'existe en base encuestas':
                 no_ekudemic.append({"mensaje": "{} ya esta en la base de encuestas ".format(cedula_text)})
 
-            elif estudiante_encuesta =='no ekudemic':
+            elif estudiante_encuesta == 'no ekudemic':
                 no_ekudemic.append({"mensaje": "{} no esta en ekudemic ".format(cedula_text)})
             else:
                 data.append(estudiante_encuesta)
@@ -292,7 +367,7 @@ class EstudiantesPreGradoResource(Resource):
                     )
                     data_final.append(estudianteEnc.data)
 
-                connectionMysql.close()
+            connectionMysql.close()
 
         return {'estudiantes_new': data_final,
                 'ya_existentes': ya_existentes,

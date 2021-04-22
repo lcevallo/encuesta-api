@@ -7,3 +7,6 @@ https://vslive.com/Blogs/News-and-Tips/2015/04/5-VS-Keyboard-Shortcuts.aspx#:~:t
 
 
 python test-columns.py > output.txt
+
+Para transformar Excel a json
+https://beautifytools.com/excel-to-json-converter.php
