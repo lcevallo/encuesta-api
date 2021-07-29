@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d568d721-a0fa-4ef1-bcba-62cd1f9de907" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/excel_maestrantes.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/estudiantePregrado.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/estudiantePregrado.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/usuarioPostGrado.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/usuarioPostGrado.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,14 +111,31 @@
       <workItem from="1618342285088" duration="200000" />
       <workItem from="1619025831667" duration="725000" />
       <workItem from="1619099646910" duration="7348000" />
+      <workItem from="1626098375566" duration="41000" />
+      <workItem from="1626098435655" duration="1032000" />
+      <workItem from="1626984380160" duration="1661000" />
+      <workItem from="1627059444373" duration="2062000" />
+      <workItem from="1627571095498" duration="24000" />
+      <workItem from="1627571142566" duration="3691000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/encuesta_api$util.coverage" NAME="util Coverage Results" MODIFIED="1619106297746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/encuesta_api$encuesta_api.coverage" NAME="encuesta-api Coverage Results" MODIFIED="1619109889981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/encuesta_api$encuesta_api.coverage" NAME="encuesta-api Coverage Results" MODIFIED="1627587607932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

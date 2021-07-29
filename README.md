@@ -10,3 +10,6 @@ python test-columns.py > output.txt
 
 Para transformar Excel a json
 https://beautifytools.com/excel-to-json-converter.php
+
+Asi se invoca
+http://127.0.0.1:5000/maestrantes-encuesta
