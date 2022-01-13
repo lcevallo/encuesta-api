@@ -13,3 +13,4 @@ https://beautifytools.com/excel-to-json-converter.php
 
 Asi se invoca
 http://127.0.0.1:5000/maestrantes-encuesta
+=CONCATENATE(A2;",")

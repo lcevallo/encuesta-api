@@ -1,5 +1,5 @@
-import pymysql.cursors
 import psycopg2
+import pymysql.cursors
 
 
 # Function return a connection.
@@ -13,6 +13,7 @@ def getConnectionMysqlActual():
     )
     return connectionMysqlEncuestas
 
+
 def getConnectionMysql():
     # You can change the connection arguments.
     connectionMysqlEncuestas = pymysql.connect(
@@ -22,6 +23,7 @@ def getConnectionMysql():
         cursorclass=pymysql.cursors.DictCursor
     )
     return connectionMysqlEncuestas
+
 
 def getConnectionEkudemic():
     connectionPostgresEkudemic = psycopg2.connect(
