@@ -179,11 +179,16 @@ class MaestrantesEncuestasResources(Resource):
 
     @classmethod
     def crear_participantes(cls, json_value):
-
+        # lime_tokens_782729 Antes era a esta base
         sql_insert_maestrante = """
-            INSERT INTO lime_tokens_782729 ( firstname, lastname, email, emailstatus, token, language, sent, remindersent, remindercount, completed, usesleft)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-        """
+            INSERT INTO lime_tokens_166831 ( firstname, lastname, email, emailstatus, token, language, sent, remindersent, remindercount, completed, usesleft)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) 
+            """
+
+        # """sql_insert_maestrante = """
+        #     INSERT INTO lime_tokens_782729 ( firstname, lastname, email, emailstatus, token, language, sent, remindersent, remindercount, completed, usesleft)
+        #     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        # """
 
         connectionMysql = myconnutils.getConnectionMysql()
         cursor = connectionMysql.cursor()
@@ -226,8 +231,8 @@ class MaestrantesEncuestasResources(Resource):
     def isInTable(cls, cedula):
         sql_select = """
             SELECT IF((
-                 SELECT count(*) FROM lime_tokens_782729 
-                 WHERE lime_tokens_782729.token =  %s)
+                 SELECT count(*) FROM lime_tokens_166831 
+                 WHERE lime_tokens_166831.token =  %s)
             ,1,0) as respuesta
         """
         connectionMysql = myconnutils.getConnectionMysql()

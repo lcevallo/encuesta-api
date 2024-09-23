@@ -18,4 +18,4 @@ api.add_resource(MaestrantesEncuestasResources, '/maestrantes-encuesta')
 api.add_resource(PreguntasEncuestasPregrado, '/preguntas_duplicadas')
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=6000, debug=True)
